@@ -1,0 +1,56 @@
+id: zj
+name: 浙江省公共资源交易服务平台
+enabled: true
+type: json
+method: POST
+url: https://ggzy.zj.gov.cn/inteligentsearch/rest/esinteligentsearch/getFullTextDataNew
+referer: https://ggzy.zj.gov.cn/jyxxgk/list.html
+headers:
+  Referer: https://ggzy.zj.gov.cn/jyxxgk/list.html
+  Content-Type: application/json;charset=utf-8
+min_interval: 1.2
+page_start: 0
+page_size: 20
+max_pages: 10
+body:
+  token: ""
+  pn: "${pn}"
+  rn: "${page_size}"
+  sdt: ""
+  edt: ""
+  wd: "${keyword}"
+  inc_wd: ""
+  exc_wd: ""
+  fields: title
+  cnum: "001"
+  sort: '{"webdate":"0"}'
+  ssort: title
+  cl: 200
+  terminal: ""
+  condition:
+    - fieldName: categorynum
+      isLike: true
+      likeType: 2
+      equal: "002001"
+  time:
+    - fieldName: webdate
+      startTime: "${start}"
+      endTime: "${end}"
+  highlights: ""
+  statistics: null
+  unionCondition: null
+  accuracy: ""
+  noParticiple: "0"
+  searchRange: null
+  isBusiness: "1"
+list_path: result.records
+total_path: result.totalcount
+fields:
+  external_id: infoid
+  title: titlenew
+  publish_date: webdate
+  region: infod
+  category: categoryname
+  content: content
+  attachments: attachname
+  url_template: "https://ggzy.zj.gov.cn{linkurl}"

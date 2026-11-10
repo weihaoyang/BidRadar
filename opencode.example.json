@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "bidradar": {
+      "type": "local",
+      "command": [
+        "D:/投标数据获取/.venv/Scripts/python.exe",
+        "-m",
+        "bidradar.mcp_server"
+      ],
+      "enabled": true,
+      "environment": {
+        "BIDRADAR_CONFIG": "D:/投标数据获取/config.yaml"
+      }
+    }
+  }
+}

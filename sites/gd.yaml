@@ -1,0 +1,33 @@
+id: gd
+name: 广东省公共资源交易平台
+enabled: true
+type: json
+method: POST
+url: https://ygp.gdzwfw.gov.cn/ggzy-portal/search/v2/items
+referer: https://ygp.gdzwfw.gov.cn/
+headers:
+  Referer: https://ygp.gdzwfw.gov.cn/
+  Content-Type: application/json
+min_interval: 1.2
+page_start: 1
+page_size: 20
+max_pages: 10
+body:
+  pageNo: "${page}"
+  pageSize: "${page_size}"
+  type: trading-type
+  siteCode: "44"
+  secondType: ""
+  publishStartTime: "${start_compact}"
+  publishEndTime: "${end_compact}"
+  keyword: "${keyword}"
+list_path: data.pageData
+total_path: data.total
+fields:
+  external_id: noticeId
+  title: noticeTitle
+  publish_date: publishDate
+  region: regionName
+  buyer: projectOwner
+  category: datasetName
+  url_template: "https://ygp.gdzwfw.gov.cn/#/44/detail?noticeId={noticeId}"

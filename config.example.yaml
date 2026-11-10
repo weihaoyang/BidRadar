@@ -1,0 +1,41 @@
+# BidRadar 配置
+db: ./data/bidradar.db
+
+# 每日增量抓取的关键词
+keywords:
+  - 信息化
+  - 人工智能
+  - 网络安全
+  - 数据中心
+  - 智慧城市
+
+# 启用的数据源
+sources:
+  cebpub: true      # 中国招标投标公共服务平台
+  ggzy: true        # 全国公共资源交易平台
+  ccgp: false       # 中国政府采购网（官方站点对 IP 限流严格，需要时再开启）
+  ted: true         # 欧盟 TED
+  sam: false        # 美国 SAM.gov，需要环境变量 SAM_API_KEY
+  searxng: false    # 可选：自建 SearXNG 全网发现，需要环境变量 SEARXNG_URL
+  gd: true          # 广东省公共资源交易平台（sites/gd.yaml）
+  js: true          # 江苏省公共资源交易平台（sites/js.yaml）
+  zj: true          # 浙江省公共资源交易服务平台（sites/zj.yaml）
+
+filters:
+  # 只保留这些地区（留空表示不限）
+  regions: []
+  # 标题中出现这些词则丢弃
+  exclude:
+    - 废标
+    - 终止公告
+
+notify:
+  # 飞书/企业微信/钉钉/Slack/Discord/通用 JSON Webhook
+  # 例：https://open.feishu.cn/open-apis/bot/v2/hook/xxxx
+  webhook: ""
+  # 告警最低金额（元），0 表示不限
+  min_amount: 0
+
+schedule:
+  # daemon 轮询间隔（秒）
+  interval_seconds: 600
